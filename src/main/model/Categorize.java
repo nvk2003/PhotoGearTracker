@@ -5,14 +5,29 @@ import java.util.ArrayList;
 // Represents a  list of products that is categorized by category Todo: (for now) and  have to include other filters
 public class Categorize {
     private ArrayList<Product> productsList;
-    private String productCategory;
+    private ArrayList<Product> categoryList;
+    private ArrayList<String> categories = new ArrayList<>();
 //    private Product product;
 
     // EFFECTS: creates a list of products
     public Categorize() {
         this.productsList = new ArrayList<>();
+
     }
 
+
+    public void setCategories() {
+//        categories = new ArrayList<>();
+        categories.add("DSLR");
+        categories.add("Mirrorless");
+        categories.add("Lens");
+        categories.add("Memory Card");
+        categories.add("Light");
+    }
+
+    public ArrayList<String> getCategories() {
+        return categories;
+    }
 
     public ArrayList<Product> getProductsList() {
         return productsList; // stub
@@ -24,13 +39,19 @@ public class Categorize {
         this.productsList.add(product);
     }
 
-    // MODIFIES: this
+    // MODIFIES: this, categoryList
     // EFFECTS: check the whole productsList and filters out the products that are of same category
     public void makeProductsListByCategory(String category) {
-         // stub
+        this.categoryList = new ArrayList<>();
+        for (int i = 0; i < productsList.size(); i++) {
+            if (productsList.get(i).getCategory().equals(category)) {
+                categoryList.add(productsList.get(i));
+            }
+        }
     }
 
+
     public ArrayList<Product> getProductsListByCategory() {
-        return null; // stub
+        return categoryList; // stub
     }
 }

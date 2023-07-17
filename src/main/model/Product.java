@@ -6,33 +6,49 @@ public class Product {
     private String brand; // Brand Name
     private String model; // Model Name
     private String retailer; // Retailer Name
-    private double price; // Price (in $), TODO: BUT SHOULD THINK IF I NEED TO KEEP IT IN INT OR STRING (COZ OF LIST)
+    private double price; // Price (in $)
     private String product;
     private String category;
-//  private String strPrice; // Price (in  String)
 
 
     // REQUIRES: Price should be in the format 00000.00 Todo: should write anything???
     // EFFECTS: constructs a product with no details and a 0$ price TODO: EMPTY OR WITH STRINGS ???
     // todo: should we create a new product everytime???? I THINK SO
     // todo: i think we need to put information right into the product rather than take details
-    public Product(String brand, String  model, String retailer, double price, String category) {
-        this.brand = brand;
-        this.model = model;
-        this.retailer = retailer;
-        this.price = price;
-        this.category = category; // stub
+    // todo new change: changing from inserting details right away to setters
+//    public Product(String brand, String  model, String retailer, double price, String category) {
+    public Product() {
+        this.brand = "";
+        this.model = "";
+        this.retailer = "";
+        this.price = 0;
+        this.category = ""; // stub
     }
 
-//    // REQUIRES: Enter correct details
-//    // MODIFIES: this
-//    // EFFECTS: takes the details of the product (brand, model, retailer, and price)
-//    public void takeDetails() {
-//        // stub
-//    }
+
+    // SETTERS
+    public void setBrand(String brand) {
+        this.brand = brand.strip();
+    }
+
+    public void setModel(String model) {
+        this.model = model.strip();
+    }
+
+    public void setRetailer(String retailer) {
+        this.retailer = retailer.strip();
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setCategory(String category) {
+        this.category = category.strip();
+    }
 
 
-
+    // GETTERS
     public String getBrand() {
         return brand; // stub
     }
@@ -44,13 +60,6 @@ public class Product {
     public String getRetailer() {
         return retailer; // stub
     }
-
-
-//    // MODIFIES: this
-//    // EFFECTS: Changes the Price parameter from 'int' to 'String'
-//    public void priceIntToString() {
-//        this.strPrice = String.valueOf(price); // stub
-//    }
 
     public double getPrice() { // todo: change from float to String
         return price; // stub
@@ -64,7 +73,8 @@ public class Product {
     // MODIFIES: this
     // EFFECTS: Combines all the details of a product and makes a single String with spaces
     public void makeProduct() {
-        this.product = brand + " " + model + " from " + retailer + " for $" + String.valueOf(price); // stub
+        this.product = getBrand() + " " + getModel() + " from " + getRetailer()
+                + " for $" + String.format("%.2f", getPrice()); // stub
     }
 
     public String getProduct() {
