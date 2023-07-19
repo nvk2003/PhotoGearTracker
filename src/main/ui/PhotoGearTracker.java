@@ -26,7 +26,7 @@ public class PhotoGearTracker {
         input.useDelimiter("\n");
         int repeat = 1;
 
-        System.out.println("\nWelcome to PhotoGear Tracker [ ◉¯] ✧˖°");
+        System.out.println("\nWelcome to PhotoGear Tracker !!!"); // [ ◉¯] ✧˖°
 
         while (repeat == 1) {
             menu();
@@ -40,7 +40,7 @@ public class PhotoGearTracker {
             }
         }
 
-        System.out.println("\nSee You Again! ヾ(＾ ∇ ＾)");
+        System.out.println("\nSee You Again! !!!"); // ヾ(＾ ∇ ＾)
 
 
     }
@@ -76,7 +76,7 @@ public class PhotoGearTracker {
         } else if (inputValue.equals("r")) {
             removeProduct();
         } else {
-            System.out.println("\nPlease Select Valid Choice (˙◠˙)");
+            System.out.println("\nPlease Select Valid Choice !!!"); // (˙◠˙)
         }
     }
 
@@ -104,7 +104,7 @@ public class PhotoGearTracker {
 
         productsList.addProduct(newProduct);
 
-        System.out.println("\nProduct Added Successfully (˶ˆᗜˆ˵)");
+        System.out.println("\nProduct Added Successfully !!!"); // (˶ˆᗜˆ˵)
     }
 
 
@@ -132,7 +132,7 @@ public class PhotoGearTracker {
                 category = "Light";
                 shouldRepeat = 0;
             } else {
-                System.out.println("\nPlease Choose Correct Option (╥﹏╥)\n");
+                System.out.println("\nPlease Choose Correct Option !!!\n"); // (╥﹏╥)
             }
         }
     }
@@ -141,7 +141,7 @@ public class PhotoGearTracker {
     private void removeProduct() {
         ArrayList<Product> products = productsList.getProductsList();
         if (products.size() == 0) {
-            System.out.println("\nThere Are No Products To Remove (ᴗ_ ᴗ。)");
+            System.out.println("\nThere Are No Products To Remove !!!"); // (ᴗ_ ᴗ。)
         } else {
             System.out.println("\nPlease Select From The Following to Remove Product:");
             for (int i = 0; i < products.size(); i++) {
@@ -170,7 +170,7 @@ public class PhotoGearTracker {
             ArrayList<Product> products = productsList.getProductsListByCategory();
             if (products.size() == 0) {
                 System.out.println("\n" + category + ":");
-                System.out.println("No Products In This Category ¯\\_(ツ)_/¯");
+                System.out.println("No Products In This Category !!!"); // ¯\_(ツ)_/¯
             } else {
                 System.out.println("\n" + category + ":");
                 for (int i = 0; i < products.size(); i++) {
@@ -187,7 +187,7 @@ public class PhotoGearTracker {
     private void viewProducts() {
         ArrayList<Product> products = productsList.getProductsList();
         if (products.size() == 0) {
-            System.out.println("\nThere Are No Products To View（◞‸◟)");
+            System.out.println("\nThere Are No Products To View !!!"); // （◞‸◟)
         } else {
             System.out.println("\nAll Products:");
             for (int i = 0; i < products.size(); i++) {
