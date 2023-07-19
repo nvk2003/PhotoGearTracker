@@ -26,7 +26,7 @@ public class PhotoGearTracker {
         input.useDelimiter("\n");
         int repeat = 1;
 
-        System.out.println("Welcome to PhotoGear Tracker [ ◉¯]");
+        System.out.println("\nWelcome to PhotoGear Tracker [ ◉¯] ✧˖°");
 
         while (repeat == 1) {
             menu();
@@ -49,13 +49,15 @@ public class PhotoGearTracker {
     private void menu() {
         System.out.println("\nSelect from the following: ");
         System.out.println("\ta -> Add a Product");
+        System.out.println("\tp -> View Products List");
         System.out.println("\tc -> View Products List By Category");
+        System.out.println("\tr -> Remove a Product");
         System.out.println("\te -> Exit");
     }
 
     // EFFECTS: Displays category menu to the user to choose from the following categories
     private void categoryDisplayMenu() {
-        System.out.println("Choose The Category of The Product:");
+        System.out.println("\nChoose The Category of The Product:");
         System.out.println("\t1 -> DSLR");
         System.out.println("\t2 -> Mirrorless");
         System.out.println("\t3 -> Lens");
@@ -69,15 +71,19 @@ public class PhotoGearTracker {
             addNewProduct();
         } else if (inputValue.equals("c")) {
             categorizeProducts();
+        } else if (inputValue.equals("p")) {
+            viewProducts();
+        } else if (inputValue.equals("r")) {
+            removeProduct();
         } else {
-            System.out.println("Please Select Valid Choice ˙◠˙");
+            System.out.println("\nPlease Select Valid Choice (˙◠˙)");
         }
     }
 
     // MODIFIES: this, productsList
     // EFFECTS: adds new products to the list
     private void addNewProduct() {
-        System.out.println("Please Insert Details To Add A Product:");
+        System.out.println("\nPlease Insert Details To Add A Product:");
         System.out.println("Enter Brand Name: ");
         String brand = input.next();
         System.out.println("Enter Model: ");
@@ -98,12 +104,14 @@ public class PhotoGearTracker {
 
         productsList.addProduct(newProduct);
 
-        System.out.println("Product Added Successfully (˶ˆᗜˆ˵)");
+        System.out.println("\nProduct Added Successfully (˶ˆᗜˆ˵)");
     }
 
 
-    // EFFECTS: takes input from the user and sets the category
+    // EFFECTS: takes input from the user and sets the Category
+    //          to the category variable of the product
     public void setCategory() {
+
         int shouldRepeat = 1;
         while (shouldRepeat == 1) {
             categoryDisplayMenu();
@@ -124,13 +132,37 @@ public class PhotoGearTracker {
                 category = "Light";
                 shouldRepeat = 0;
             } else {
-                System.out.println("Please Choose Correct Option");
+                System.out.println("\nPlease Choose Correct Option (╥﹏╥)\n");
             }
         }
     }
 
+    // EFFECTS: Deletes a selected product from the list of products
+    private void removeProduct() {
+        ArrayList<Product> products = productsList.getProductsList();
+        if (products.size() == 0) {
+            System.out.println("\nThere Are No Products To Remove (ᴗ_ ᴗ。)");
+        } else {
+            System.out.println("\nPlease Select From The Following to Remove Product:");
+            for (int i = 0; i < products.size(); i++) {
+                products.get(i).makeProduct();
+                String product = products.get(i).getProduct();
+                int x = i + 1;
+                System.out.println(x + " -> " + product);
+            }
+            System.out.println("\nChoose Any Product From Above To Remove: ");
+            String productInput = input.next();
+            if (Integer.parseInt(productInput) <= products.size()) {
+                int a = Integer.parseInt(productInput);
+                products.remove(products.get(a - 1));
+            }
+        }
 
-    // EFFECTS: Prints out categorized list of products according to their categories
+
+    }
+
+    // EFFECTS: Prints out categorized list of products with the respective categories
+    //          and return a print statement if there are no items in a particular category
     private void categorizeProducts() {
 
         for (String category : productsList.getCategories()) {
@@ -138,7 +170,7 @@ public class PhotoGearTracker {
             ArrayList<Product> products = productsList.getProductsListByCategory();
             if (products.size() == 0) {
                 System.out.println("\n" + category + ":");
-                System.out.println("No Items In This Category (╥﹏╥)");
+                System.out.println("No Products In This Category ¯\\_(ツ)_/¯");
             } else {
                 System.out.println("\n" + category + ":");
                 for (int i = 0; i < products.size(); i++) {
@@ -147,7 +179,22 @@ public class PhotoGearTracker {
                         System.out.println(products.get(i).getProduct());
                     }
                 }
+            }
+        }
+    }
 
+
+    private void viewProducts() {
+        ArrayList<Product> products = productsList.getProductsList();
+        if (products.size() == 0) {
+            System.out.println("\nThere Are No Products To View（◞‸◟)");
+        } else {
+            System.out.println("\nAll Products:");
+            for (int i = 0; i < products.size(); i++) {
+                products.get(i).makeProduct();
+                String product = products.get(i).getProduct();
+                int x = i + 1;
+                System.out.println(x + ". " + product);
             }
         }
     }

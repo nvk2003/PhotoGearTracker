@@ -7,17 +7,14 @@ public class Categorize {
     private ArrayList<Product> productsList;
     private ArrayList<Product> categoryList;
     private ArrayList<String> categories = new ArrayList<>();
-//    private Product product;
+
 
     // EFFECTS: creates a list of products
     public Categorize() {
         this.productsList = new ArrayList<>();
-
     }
 
-
     public void setCategories() {
-//        categories = new ArrayList<>();
         categories.add("DSLR");
         categories.add("Mirrorless");
         categories.add("Lens");
@@ -37,6 +34,13 @@ public class Categorize {
     // EFFECTS: adds a new product to the list of products
     public void addProduct(Product product) {
         this.productsList.add(product);
+    }
+
+
+    // MODIFIES: this, productsList
+    // EFFECTS: deletes a product that is selected from the list of products
+    public void removeProduct(Product product) {
+        this.productsList.remove(product);
     }
 
     // MODIFIES: this, categoryList
