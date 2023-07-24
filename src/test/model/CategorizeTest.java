@@ -18,6 +18,7 @@ public class CategorizeTest {
     @Test
     void testConstructor() {
         assertEquals(0, testCategorize.getProductsList().size());
+        assertEquals(0, testCategorize.getCategories().size());
     }
 
     @Test

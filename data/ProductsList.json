@@ -1,0 +1,33 @@
+{
+    "productsList": [
+        {
+            "retailer": "ubc",
+            "price": 3099.99,
+            "model": "a7iv",
+            "category": "Mirrorless",
+            "brand": "Sony"
+        },
+        {
+            "retailer": "ubc",
+            "price": 2090.9,
+            "model": "a7iii",
+            "category": "Mirrorless",
+            "brand": "Sony"
+        },
+        {
+            "retailer": "Sfu",
+            "price": 2034,
+            "model": "Eos R5",
+            "category": "DSLR",
+            "brand": "Canon"
+        },
+        {
+            "retailer": "kpu",
+            "price": 3499.99,
+            "model": "70-200",
+            "category": "Lens",
+            "brand": "sony"
+        }
+    ],
+    "name": "Products List"
+}

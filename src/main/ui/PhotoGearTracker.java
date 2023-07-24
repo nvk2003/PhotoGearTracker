@@ -2,19 +2,30 @@ package ui;
 
 import model.Categorize;
 import model.Product;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Photography Products Tracking Application
+// Based on the code structure from TellerApp
 public class PhotoGearTracker {
+    private static final String JSON_LOCATION = "./data/ProductsList.json";
     private Scanner input;
     private String category;
     private Categorize productsList;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: runs the PhotoGear Tracker application
     public PhotoGearTracker() {
-        productsList = new Categorize();
+        productsList = new Categorize("Products List");
         productsList.setCategories();
+        jsonWriter = new JsonWriter(JSON_LOCATION);
+        jsonReader = new JsonReader(JSON_LOCATION);
         runTracker();
     }
 
@@ -26,7 +37,7 @@ public class PhotoGearTracker {
         input.useDelimiter("\n");
         int repeat = 1;
 
-        System.out.println("\nWelcome to PhotoGear Tracker !!!");
+        System.out.println("\nWelcome to PhotoGear Tracker");
 
         while (repeat == 1) {
             menu();
@@ -40,7 +51,7 @@ public class PhotoGearTracker {
             }
         }
 
-        System.out.println("\nSee You Again !!!");
+        System.out.println("\nCome Back To Make Sure Your Data Is Safe !!!");
 
 
     }
@@ -52,6 +63,8 @@ public class PhotoGearTracker {
         System.out.println("\tp -> View Products List");
         System.out.println("\tc -> View Products List By Category");
         System.out.println("\tr -> Remove a Product");
+        System.out.println("\ts -> Save Your List");
+        System.out.println("\tl -> Load Your Previously Saved List");
         System.out.println("\te -> Exit");
     }
 
@@ -75,6 +88,10 @@ public class PhotoGearTracker {
             viewProducts();
         } else if (inputValue.equals("r")) {
             removeProduct();
+        } else if (inputValue.equals("s")) {
+            saveProductsList();
+        } else if (inputValue.equals("l")) {
+            loadProductsList();
         } else {
             System.out.println("\nPlease Select Valid Choice !!!");
         }
@@ -137,29 +154,45 @@ public class PhotoGearTracker {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: Deletes a selected product from the list of products
     private void removeProduct() {
         ArrayList<Product> products = productsList.getProductsList();
-        if (products.size() == 0) {
-            System.out.println("\nThere Are No Products To Remove !!!");
-        } else {
-            System.out.println("\nPlease Select From The Following to Remove Product:");
-            for (int i = 0; i < products.size(); i++) {
-                products.get(i).makeProduct();
-                String product = products.get(i).getProduct();
-                int x = i + 1;
-                System.out.println(x + " -> " + product);
-            }
-            System.out.println("\nChoose Any Product From Above To Remove: ");
-            String productInput = input.next();
-            if (Integer.parseInt(productInput) <= products.size()) {
-                int a = Integer.parseInt(productInput);
-                products.remove(products.get(a - 1));
+        {
+            if (products.size() == 0) {
+                System.out.println("\nThere Are No Products To Remove !!!");
+            } else {
+                int repeatAgain = 1;
+                while (repeatAgain == 1) {
+                    System.out.println("\t1 -> Remove Only One Product");
+                    System.out.println("\t2 -> Remove All Products");
+                    String remInput = input.next();
+                    if (remInput.equals("1")) {
+                        removeOneProduct();
+                        repeatAgain = 0;
+                    } else if (remInput.equals("2")) {
+                        removeAllProducts();
+                        repeatAgain = 0;
+                    } else {
+                        System.out.println("\nPlease Choose Correct Option !!!\n");
+                    }
+                }
             }
         }
-
-
     }
+
+
+    // EFFECTS: Prints out the list of products for being removed from the list
+    private void removeProductsList() {
+        ArrayList<Product> products = productsList.getProductsList();
+        for (int i = 0; i < products.size(); i++) {
+            products.get(i).makeProduct();
+            String product = products.get(i).getProduct();
+            int x = i + 1;
+            System.out.println("\t" + x + " -> " + product);
+        }
+    }
+
 
     // EFFECTS: Prints out categorized list of products with the respective categories
     //          and return a print statement if there are no items in a particular category
@@ -184,6 +217,7 @@ public class PhotoGearTracker {
     }
 
 
+    // EFFECTS: Prints out the list of products in order
     private void viewProducts() {
         ArrayList<Product> products = productsList.getProductsList();
         if (products.size() == 0) {
@@ -197,5 +231,60 @@ public class PhotoGearTracker {
                 System.out.println(x + ". " + product);
             }
         }
+    }
+
+
+    // EFFECTS: saves the products list to file
+    private void saveProductsList() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(productsList);
+            jsonWriter.close();
+            System.out.println("Don't Worry! Your " + productsList.getName()
+                    + " Went To " + JSON_LOCATION + " And Is Very Safe.");
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_LOCATION);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads Products List from file
+    private void loadProductsList() {
+        try {
+            productsList = jsonReader.read();
+            System.out.println("Got Back Your " + productsList.getName() + " From " + JSON_LOCATION);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_LOCATION);
+        }
+    }
+
+
+    // MODIFIES: this, productsList
+    // EFFECTS: removes one product that was chosen by the user
+    private void removeOneProduct() {
+        ArrayList<Product> products = productsList.getProductsList();
+        int repeat = 1;
+        while (repeat == 1) {
+            System.out.println("\nPlease Select From The Following to Remove Product:");
+            removeProductsList();
+            System.out.println("\nChoose Any Product From Above To Remove: ");
+            String productInput = input.next();
+            if (Integer.parseInt(productInput) <= products.size()) {
+                int a = Integer.parseInt(productInput);
+                products.remove(products.get(a - 1));
+                System.out.println("\nYour Product's Gone To Infinity And Beyond !!!");
+                repeat = 0;
+            } else {
+                System.out.println("\nPlease Choose The Correct Product !!!");
+            }
+        }
+    }
+
+
+    // MODIFIES: this, productsList
+    // EFFECTS: remove all products from the list of products
+    private void removeAllProducts() {
+        productsList.getProductsList().removeAll(productsList.getProductsList());
+        System.out.println("Removed All Products !!!");
     }
 }

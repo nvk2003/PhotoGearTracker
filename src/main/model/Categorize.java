@@ -1,17 +1,24 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
-// Represents a  list of products that is categorized by category Todo: (for now) and  have to include other filters
-public class Categorize {
+// Represents a  list of products that is categorized by category and remove products from list
+public class Categorize implements Writable {
     private ArrayList<Product> productsList;
     private ArrayList<Product> categoryList;
-    private ArrayList<String> categories = new ArrayList<>();
+    private ArrayList<String> categories;
+    private String name;
 
 
     // EFFECTS: creates a list of products
-    public Categorize() {
+    public Categorize(String name) {
+        this.name = name;
         this.productsList = new ArrayList<>();
+        this.categories = new ArrayList<>();
     }
 
     public void setCategories() {
@@ -20,6 +27,10 @@ public class Categorize {
         categories.add("Lens");
         categories.add("Memory Card");
         categories.add("Light");
+    }
+
+    public String getName() {
+        return name;
     }
 
     public ArrayList<String> getCategories() {
@@ -57,5 +68,24 @@ public class Categorize {
 
     public ArrayList<Product> getProductsListByCategory() {
         return categoryList; // stub
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("productsList", productsListToJson());
+        return json;
+    }
+
+    // EFFECTS: returns products in this Products List as a JSON array
+    private JSONArray productsListToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Product product : productsList) {
+            jsonArray.put(product.toJson());
+        }
+
+        return jsonArray;
     }
 }

@@ -1,22 +1,21 @@
 package model;
 
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents Product Details that takes Brand, Model, Retailer Name, and Price (in $) and forms a string of a product
-public class Product {
+public class Product implements Writable {
     private String brand; // Brand Name
     private String model; // Model Name
     private String retailer; // Retailer Name
     private double price; // Price (in $)
-    private String product;
-    private String category;
+    private String product; // String of Product with all details
+    private String category; // Category
 
 
-    // REQUIRES: Price should be in the format 00000.00 Todo: should write anything???
-    // EFFECTS: constructs a product with no details and a 0$ price TODO: EMPTY OR WITH STRINGS ???
-    // todo: should we create a new product everytime???? I THINK SO
-    // todo: i think we need to put information right into the product rather than take details
-    // todo new change: changing from inserting details right away to setters
-//    public Product(String brand, String  model, String retailer, double price, String category) {
+    // EFFECTS: constructs a product with no details and a 0$ price
+    // public Product(String brand, String  model, String retailer, double price, String category) {
     public Product() {
         this.brand = "";
         this.model = "";
@@ -79,5 +78,17 @@ public class Product {
 
     public String getProduct() {
         return product; // stub
+    }
+
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("brand", brand);
+        json.put("model", model);
+        json.put("retailer", retailer);
+        json.put("price", price);
+        json.put("category", category);
+        return json;
     }
 }
