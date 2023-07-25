@@ -12,7 +12,7 @@ public class CategorizeTest {
 
     @BeforeEach
     void runBefore() {
-        testCategorize = new Categorize();
+        testCategorize = new Categorize("Testing  Products");
     }
 
     @Test

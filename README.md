@@ -16,9 +16,10 @@ As a photography enthusiast, I understand the excitement and sometimes overwhelm
 ## User Stories
 - As a user, I want to be able to add equipment details (like Brand Name, Model Number, Price, Retailer Name etc.)
 - As a user, I want to be able to view the list of my photography equipments.
-- As a user, I want to be able to categorize my equipment by selecting a category from a predefined list.
+- As a user, I want to be able to categorize my equipments by selecting a category from a predefined list.
 - As a user, I want to be able to sort my equipment list by category.
-- As a user, I want to be able to delete items from my list.
+- As a user, I want to be able to delete products from my list.
+- As a user, I want to be able to clear all products from my list.
 - As a user, I want to be able to select an item from the list and modify its details.
 - As a user, I want to be able to save my data while using the application and also while quitting the application.
 - As a user, I want to be able to load my data that was previously saved.

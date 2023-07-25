@@ -1,0 +1,19 @@
+{
+  "productsList": [
+    {
+      "retailer": "UBC",
+      "price": 3099.99,
+      "model": "a7iv",
+      "category": "Mirrorless",
+      "brand": "Sony"
+    },
+    {
+      "retailer": "SFU",
+      "price": 2095,
+      "model": "EOS",
+      "category": "DSLR",
+      "brand": "Canon"
+    }
+  ],
+  "name": "Testing Products List"
+}
