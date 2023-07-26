@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import java.io.*;
 
 // Represents a writer that writes JSON representation of Products List to file
-// Based on the code structure from DemoFile
+// Based on the code structure from JsonSerializationDemo
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;

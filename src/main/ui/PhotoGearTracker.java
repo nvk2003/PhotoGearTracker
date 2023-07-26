@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 // Photography Products Tracking Application
-// Based on the code structure from TellerApp
+// Based on the code structure from TellerApp and JsonSerializationDemo
 public class PhotoGearTracker {
     private static final String JSON_LOCATION = "./data/ProductsList.json";
     private Scanner input;
@@ -20,8 +20,8 @@ public class PhotoGearTracker {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
-    // EFFECTS: runs the PhotoGear Tracker application
-    public PhotoGearTracker() {
+    // EFFECTS: constructs empty products list and runs the PhotoGear Tracker application
+    public PhotoGearTracker() throws FileNotFoundException {
         productsList = new Categorize("Products List");
         productsList.setCategories();
         jsonWriter = new JsonWriter(JSON_LOCATION);
@@ -157,15 +157,13 @@ public class PhotoGearTracker {
     // MODIFIES: this
     // EFFECTS: Deletes a selected product from the list of products
     private void removeProduct() {
-        ArrayList<Product> products = productsList.getProductsList();
         {
-            if (products.size() == 0) {
+            if (productsList.getProductsList().size() == 0) {
                 System.out.println("\nThere Are No Products To Remove !!!");
             } else {
                 int repeatAgain = 1;
                 while (repeatAgain == 1) {
-                    System.out.println("\t1 -> Remove Only One Product");
-                    System.out.println("\t2 -> Remove All Products");
+                    removeStatements();
                     String remInput = input.next();
                     if (remInput.equals("1")) {
                         removeOneProduct();
@@ -173,6 +171,9 @@ public class PhotoGearTracker {
                     } else if (remInput.equals("2")) {
                         removeAllProducts();
                         repeatAgain = 0;
+                    } else if (remInput.equals("x")) {
+                        System.out.println("\n'Remove' feels bad for not using it !!!");
+                        break;
                     } else {
                         System.out.println("\nPlease Choose Correct Option !!!\n");
                     }
@@ -181,9 +182,16 @@ public class PhotoGearTracker {
         }
     }
 
+    // EFFECTS: prints out remove choices for user
+    private void removeStatements() {
+        System.out.println("Choose A Way To Throw Your Product Away:");
+        System.out.println("\t1 -> Throw One Product");
+        System.out.println("\t2 -> Throw All Products");
+        System.out.println("\tx -> Throw You To Main Menu");
+    }
 
     // EFFECTS: Prints out the list of products for being removed from the list
-    private void removeProductsList() {
+    private void removingProductsList() {
         ArrayList<Product> products = productsList.getProductsList();
         for (int i = 0; i < products.size(); i++) {
             products.get(i).makeProduct();
@@ -193,11 +201,39 @@ public class PhotoGearTracker {
         }
     }
 
+    // MODIFIES: this, productsList
+    // EFFECTS: removes one product that was chosen by the user
+    private void removeOneProduct() {
+        ArrayList<Product> products = productsList.getProductsList();
+        int repeat = 1;
+        while (repeat == 1) {
+            System.out.println("\nPlease Select From The Following to Remove Product:");
+            removingProductsList();
+            System.out.println("\nChoose Any Product From Above To Remove: ");
+            String productInput = input.next();
+            if (Integer.parseInt(productInput) <= products.size()) {
+                int a = Integer.parseInt(productInput);
+                products.remove(products.get(a - 1));
+                System.out.println("\nYour Product's Gone To Infinity And Beyond !!!");
+                repeat = 0;
+            } else {
+                System.out.println("\nPlease Choose The Correct Product !!!");
+            }
+        }
+    }
+
+
+    // MODIFIES: this, productsList
+    // EFFECTS: remove all products from the list of products
+    private void removeAllProducts() {
+        productsList.getProductsList().removeAll(productsList.getProductsList());
+        System.out.println("\nHope You Don't Regret This Decision !!!");
+    }
+
 
     // EFFECTS: Prints out categorized list of products with the respective categories
     //          and return a print statement if there are no items in a particular category
     private void categorizeProducts() {
-
         for (String category : productsList.getCategories()) {
             productsList.makeProductsListByCategory(category);
             ArrayList<Product> products = productsList.getProductsListByCategory();
@@ -256,35 +292,5 @@ public class PhotoGearTracker {
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_LOCATION);
         }
-    }
-
-
-    // MODIFIES: this, productsList
-    // EFFECTS: removes one product that was chosen by the user
-    private void removeOneProduct() {
-        ArrayList<Product> products = productsList.getProductsList();
-        int repeat = 1;
-        while (repeat == 1) {
-            System.out.println("\nPlease Select From The Following to Remove Product:");
-            removeProductsList();
-            System.out.println("\nChoose Any Product From Above To Remove: ");
-            String productInput = input.next();
-            if (Integer.parseInt(productInput) <= products.size()) {
-                int a = Integer.parseInt(productInput);
-                products.remove(products.get(a - 1));
-                System.out.println("\nYour Product's Gone To Infinity And Beyond !!!");
-                repeat = 0;
-            } else {
-                System.out.println("\nPlease Choose The Correct Product !!!");
-            }
-        }
-    }
-
-
-    // MODIFIES: this, productsList
-    // EFFECTS: remove all products from the list of products
-    private void removeAllProducts() {
-        productsList.getProductsList().removeAll(productsList.getProductsList());
-        System.out.println("Removed All Products !!!");
     }
 }

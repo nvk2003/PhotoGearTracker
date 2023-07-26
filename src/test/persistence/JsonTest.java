@@ -4,6 +4,7 @@ import model.Product;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// Based on the code structure from JsonSerializationDemo
 public class JsonTest {
     protected void checkProduct(String brand, String model, String retailer,
                                 Double price, String category, Product product) {

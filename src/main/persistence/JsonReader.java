@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 import org.json.*;
 
 // Represents a reader that reads ProductsList from JSON data stored in file
-// Based on the code structure from DemoFile
+// Based on the code structure from JsonSerializationDemo
 public class JsonReader {
     private String source;
 

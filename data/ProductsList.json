@@ -1,4 +1,26 @@
 {
-    "productsList": [],
+    "productsList": [
+        {
+            "retailer": "ubc",
+            "price": 3000,
+            "model": "a2",
+            "category": "DSLR",
+            "brand": "Sony"
+        },
+        {
+            "retailer": "sfu",
+            "price": 2300,
+            "model": "b2",
+            "category": "Lens",
+            "brand": "canon"
+        },
+        {
+            "retailer": "uvi",
+            "price": 1359,
+            "model": "c2",
+            "category": "DSLR",
+            "brand": "test"
+        }
+    ],
     "name": "Products List"
 }

@@ -65,9 +65,8 @@ public class Categorize implements Writable {
         }
     }
 
-
     public ArrayList<Product> getProductsListByCategory() {
-        return categoryList; // stub
+        return categoryList;
     }
 
     @Override
