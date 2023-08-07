@@ -130,12 +130,11 @@ public class PhotoGearTrackerApp extends JFrame {
         viewButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                if (viewing != null) {
-//                    viewing.dispose();
-//                }
-//                viewing = new ViewProducts(productsList);
-//                viewing.setVisible(true);
-                new ViewProducts(productsList);
+                if (viewing != null) {
+                    viewing.dispose();
+                }
+                viewing = new ViewProducts(productsList);
+                viewing.setVisible(true);
 
             }
         });
