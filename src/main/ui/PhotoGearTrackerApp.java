@@ -57,9 +57,8 @@ public class PhotoGearTrackerApp extends JFrame {
         container.setLayout(null);
 
         getMainWindowLabels();
-
-
     }
+
 
     // EFFECTS: sets the gifs and logo in the Main Window
     public void getMainWindowLabels() {
@@ -71,7 +70,7 @@ public class PhotoGearTrackerApp extends JFrame {
 
         JLabel logo = new JLabel("");
         logo.setIcon(icon);
-        logo.setBounds(240, -145, 800, 400);
+        logo.setBounds(240, 0, 500, 100);
         container.add(logo);
 
         JLabel cameraGif = new JLabel("");
@@ -102,6 +101,7 @@ public class PhotoGearTrackerApp extends JFrame {
         addButton.setBounds(360, 100, 170, 50);
         container.add(addButton);
         addButton.setCursor(cur);
+
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -123,17 +123,19 @@ public class PhotoGearTrackerApp extends JFrame {
     private void viewButton() {
         JButton viewButton = new JButton("View Products");
         viewButton.setBounds(360, 150, 170, 50);
-        container.add(viewButton);
         viewButton.setCursor(cur);
+        container.add(viewButton);
+
 
         viewButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (viewing != null) {
-                    viewing.dispose();
-                }
-                viewing = new ViewProducts(productsList);
-                viewing.setVisible(true);
+//                if (viewing != null) {
+//                    viewing.dispose();
+//                }
+//                viewing = new ViewProducts(productsList);
+//                viewing.setVisible(true);
+                new ViewProducts(productsList);
 
             }
         });
