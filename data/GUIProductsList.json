@@ -1,0 +1,10 @@
+{
+    "productsList": [{
+        "retailer": "UBC",
+        "price": 3099.99,
+        "model": "a7iv",
+        "category": "Mirrorless",
+        "brand": "Sony"
+    }],
+    "name": "GUI Products List"
+}

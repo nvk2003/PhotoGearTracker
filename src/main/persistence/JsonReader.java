@@ -13,6 +13,7 @@ import org.json.*;
 
 // Represents a reader that reads ProductsList from JSON data stored in file
 // Based on the code structure from JsonSerializationDemo
+// URL: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 public class JsonReader {
     private String source;
 

@@ -12,6 +12,9 @@ import java.util.Scanner;
 
 // Photography Products Tracking Application
 // Based on the code structure from TellerApp and JsonSerializationDemo
+// URL: https://github.students.cs.ubc.ca/CPSC210/TellerApp
+// URL: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
 public class PhotoGearTracker {
     private static final String JSON_LOCATION = "./data/ProductsList.json";
     private Scanner input;

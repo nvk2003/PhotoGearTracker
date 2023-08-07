@@ -1,25 +1,39 @@
 {
     "productsList": [
         {
-            "retailer": "ubc",
-            "price": 3000,
-            "model": "a2",
-            "category": "DSLR",
+            "retailer": "UBC",
+            "price": 3099.99,
+            "model": "a7iv",
+            "category": "Mirrorless",
             "brand": "Sony"
         },
         {
-            "retailer": "sfu",
-            "price": 2300,
-            "model": "b2",
-            "category": "Lens",
-            "brand": "canon"
+            "retailer": "SFU",
+            "price": 2095,
+            "model": "EOS R5",
+            "category": "DSLR",
+            "brand": "Canon"
         },
         {
-            "retailer": "uvi",
-            "price": 1359,
-            "model": "c2",
+            "retailer": "UCW",
+            "price": 2999.99,
+            "model": "a7iii",
+            "category": "Mirrorless",
+            "brand": "Sony"
+        },
+        {
+            "retailer": "SFU",
+            "price": 3499.99,
+            "model": "70-200",
+            "category": "Lens",
+            "brand": "Sony"
+        },
+        {
+            "retailer": "SFU",
+            "price": 3099.99,
+            "model": "a7000",
             "category": "DSLR",
-            "brand": "test"
+            "brand": "Sony"
         }
     ],
     "name": "Products List"
