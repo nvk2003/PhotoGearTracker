@@ -81,6 +81,8 @@ public class Product implements Writable {
     }
 
 
+
+    // EFFECTS: creates a product in the Json file with the assigned string names
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

@@ -69,6 +69,8 @@ public class Categorize implements Writable {
         return categoryList;
     }
 
+
+    // EFFECTS: creates two fields of name and productsList in the json file
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

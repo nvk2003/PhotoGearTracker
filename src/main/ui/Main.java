@@ -3,6 +3,8 @@ package ui;
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 
+
+// Runs the PhotoGearTrackerApp
 public class Main {
     public static void main(String[] args) {
 
