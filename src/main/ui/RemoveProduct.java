@@ -1,6 +1,8 @@
 package ui;
 
 import model.Categorize;
+import model.Event;
+import model.EventLog;
 import model.Product;
 
 import javax.swing.*;

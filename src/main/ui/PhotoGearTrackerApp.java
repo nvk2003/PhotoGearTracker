@@ -3,6 +3,8 @@ package ui;
 // Imports
 
 import model.Categorize;
+import model.Event;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -126,7 +128,6 @@ public class PhotoGearTrackerApp extends JFrame {
         viewButton.setCursor(cur);
         container.add(viewButton);
 
-
         viewButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -199,6 +200,7 @@ public class PhotoGearTrackerApp extends JFrame {
         loadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 try {
                     productsList = jsonReader.read();
 //                    JOptionPane.showMessageDialog(null, "Got Back Your "
@@ -225,6 +227,7 @@ public class PhotoGearTrackerApp extends JFrame {
         quitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 //                dispose();
+                printEventLog(EventLog.getInstance());
                 dispose();
                 quitDialog();
             }
@@ -283,5 +286,12 @@ public class PhotoGearTrackerApp extends JFrame {
         });
     }
 
+
+    // EFFECTS: prints out the EventLog that is recorded
+    public void printEventLog(EventLog el) {
+        for (Event next : el) {
+            System.out.println(next.toString() + "\n");
+        }
+    }
 
 }

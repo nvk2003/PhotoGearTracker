@@ -45,6 +45,8 @@ public class Categorize implements Writable {
     // EFFECTS: adds a new product to the list of products
     public void addProduct(Product product) {
         this.productsList.add(product);
+        product.makeProduct();
+        EventLog.getInstance().logEvent(new Event("Added " + product.getProduct() + " to the list."));
     }
 
 
@@ -52,6 +54,8 @@ public class Categorize implements Writable {
     // EFFECTS: deletes a product that is selected from the list of products
     public void removeProduct(Product product) {
         this.productsList.remove(product);
+        product.makeProduct();
+        EventLog.getInstance().logEvent(new Event("Removed " + product.getProduct() + " from the list."));
     }
 
     // MODIFIES: this, categoryList

@@ -1,6 +1,8 @@
 package ui;
 
 import model.Categorize;
+import model.Event;
+import model.EventLog;
 import model.Product;
 
 import javax.swing.*;
@@ -119,6 +121,7 @@ public class ViewProducts extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == categoryButton) {
+
                     dispose();
                     new ViewProductsByCategory(productsList);
                 }
