@@ -44,6 +44,7 @@ public class Event {
         return description;
     }
 
+//    @SuppressWarnings("checkstyle:OperatorWrap")
     @Override
     public boolean equals(Object other) {
         if (other == null) {
@@ -54,8 +55,8 @@ public class Event {
         }
         Event otherEvent = (Event) other;
 
-        return (this.dateLogged.equals(otherEvent.dateLogged) &&
-                this.description.equals(otherEvent.description));
+        return (this.dateLogged.equals(otherEvent.dateLogged)
+                && this.description.equals(otherEvent.description));
     }
 
     @Override
