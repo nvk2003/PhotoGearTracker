@@ -52,5 +52,5 @@ for users in creating a comprehensive wishlist that they can refer to when makin
 ![](./UML_Design_Diagram.png)
 
 - I would do refactoring between ViewProducts and ViewProductsByCategory because the only difference between both
-of those classes is just the way the list is being printed and a single button. Maybe I will create a new class where 
-all the stuff happens and both of these classes will extend that new class and Override the printing method.
+of those classes is just the way the list is being printed and a single button. Maybe I will create a new class in which
+it contains all the main methods and both of these classes will extend that new class and Override the printing method.
