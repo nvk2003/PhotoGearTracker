@@ -31,14 +31,26 @@ for users in creating a comprehensive wishlist that they can refer to when makin
 - As a user, I want to be able to load my data that was previously saved.
 
 ## Phase 4: Task 2
+
 - When the user adds a new Product to the list of products, an Event gets added to the EventLog. 
-  - Example: Adding new product with details (Brand: Sony, Model: a7iv, Retailer: Kerrisdale Cameras, Price: 3099.99, Category: Mirrorless), the Event prints on the console like:
+  - Example: Adding new product with details (Brand: Sony, Model: a7iv, Retailer: Kerrisdale Cameras, Price: 3099.99, 
+  Category: Mirrorless), the Event prints on the console like:
   
 
   ![](./data/readme_pics/AddNewProduct.png)
   
 - When the user removes a Products from the list of products, an Event gets added to the EventLog.
-  - Example: Removing a product with details (Brand: Sony, Model: 70-200, Retailer: Broadway Cameras, Price: 3499.99, Category: Lens), the Event prints on the console like:
+  - Example: Removing a product with details (Brand: Sony, Model: 70-200, Retailer: Broadway Cameras, Price: 3499.99,
+  Category: Lens), the Event prints on the console like:
 
 
 ![](./data/readme_pics/RemoveProduct.png)
+
+
+## Phase 4: Task 3
+
+![](./UML_Design_Diagram.png)
+
+- I would do refactoring between ViewProducts and ViewProductsByCategory because the only difference between both
+of those classes is just the way the list is being printed and a single button. Maybe I will create a new class where 
+all the stuff happens and both of these classes will extend that new class and Override the printing method.
