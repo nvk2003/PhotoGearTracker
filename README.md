@@ -30,7 +30,7 @@ for users in creating a comprehensive wishlist that they can refer to when makin
 - As a user, I want to be able to save my data while using the application and also while quitting the application.
 - As a user, I want to be able to load my data that was previously saved.
 
-## Phase 4: Task 2
+## EventLog
 
 - When the user adds a new Product to the list of products, an Event gets added to the EventLog. 
   - Example: Adding new product with details (Brand: Sony, Model: a7iv, Retailer: Kerrisdale Cameras, Price: 3099.99, 
@@ -47,10 +47,6 @@ for users in creating a comprehensive wishlist that they can refer to when makin
 ![](./data/readme_pics/RemoveProduct.png)
 
 
-## Phase 4: Task 3
+## UML Diagram
 
 ![](./UML_Design_Diagram.png)
-
-- I would do refactoring between ViewProducts and ViewProductsByCategory because the only difference between both
-of those classes is just the way the list is being printed and a single button. Maybe I will create a new class in which
-it contains all the main methods and both of these classes will extend that new class and Override the printing method.
